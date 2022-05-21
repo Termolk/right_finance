@@ -35,11 +35,6 @@ public class MoneyTransactions extends AppCompatActivity {
 
     }
 
-    private void initialViews() {
-        textViewAction = findViewById(R.id.textViewAction);
-        editTextMoney = findViewById(R.id.editTextMoney);
-        buttonChange = findViewById(R.id.buttonChange);
-    }
 
     private void clickOnButtonChange() {
         buttonChange.setOnClickListener(view -> {
@@ -56,6 +51,12 @@ public class MoneyTransactions extends AppCompatActivity {
                 Toast.makeText(this, "Вы не указали числовое значение", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void initialViews() {
+        textViewAction = findViewById(R.id.textViewAction);
+        editTextMoney = findViewById(R.id.editTextMoney);
+        buttonChange = findViewById(R.id.buttonChange);
     }
 
 
