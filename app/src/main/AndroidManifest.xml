@@ -10,18 +10,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RightFinance">
         <activity
+            android:name=".MoneyTransactions"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity2"
+            android:exported="true"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/Theme.RightFinance.NoActionBar"></activity>
+        <activity
             android:name=".SplashScreen"
-            android:theme="@style/SplashTheme"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"
+            android:theme="@style/SplashTheme"></activity>
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
