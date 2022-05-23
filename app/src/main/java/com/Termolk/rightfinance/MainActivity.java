@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     TextView textViewTotalMoney;
     Button buttonSubtractMoney;
     Button buttonAddMoney;
+    Button buttonResetValues;
 
     SharedPreferences sPref;
 
@@ -34,9 +35,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         initialViews();
         intent = new Intent(this, MoneyTransactions.class);
-        listenButtons();
         loadMoneyValues();
-
+        listenButtons();
     }
 
     @Override
@@ -47,10 +47,11 @@ public class MainActivity extends AppCompatActivity {
                 case REQUEST_CODE_CHANGE_MONEY:
                     money = data.getIntExtra("ChangedMoney", 0);
                     textViewTotalMoney.setText(money + "");
+                    saveMoneyValues();
                     break;
             }
         } else {
-            Toast.makeText(this, "Неверный резалт", Toast.LENGTH_SHORT).show();
+
         }
         saveMoneyValues();
     }
@@ -75,10 +76,6 @@ public class MainActivity extends AppCompatActivity {
         textViewTotalMoney.setText(savedText);
     }
 
-    private void listenButtons() {
-        clickOnButtonAddMoney();
-        clickOnButtonSubtractMoney();
-    }
 
     private void clickOnButtonAddMoney() {
         buttonAddMoney.setOnClickListener(view -> {
@@ -94,10 +91,24 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void clickOnButtonResetValues() {
+        buttonResetValues.setOnClickListener(view -> {
+            money = 0;
+            textViewTotalMoney.setText("0");
+        });
+    }
+
+    private void listenButtons() {
+        clickOnButtonAddMoney();
+        clickOnButtonSubtractMoney();
+        clickOnButtonResetValues();
+    }
+
     private void initialViews() {
         textViewTotalMoney = findViewById(R.id.textViewTotalMoney);
         buttonSubtractMoney = findViewById(R.id.buttonSubtractMoney);
         buttonAddMoney = findViewById(R.id.buttonAddMoney);
+        buttonResetValues = findViewById(R.id.buttonResetValues);
     }
 
 }
