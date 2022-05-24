@@ -69,11 +69,18 @@
                 android:text="История" />
         </LinearLayout>
 
-        <Button
-            android:id="@+id/buttonResetValues"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Сбросить данные" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buttonResetValues"
+                android:layout_width="30dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Сбросить данные" />
+        </LinearLayout>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

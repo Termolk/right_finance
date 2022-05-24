@@ -65,25 +65,6 @@ public class DBManager {
         return data;
     }
 
-
-//    ArrayList<Result> getGroupByUserResults(){
-//        ArrayList<Result> data = new ArrayList<Result>();
-//
-//        Cursor cursor = db.query("RESULTS", new String[]{"USERNAME", "MAX(SCORE) AS MS"}, null, null, "USERNAME", null, "MS DESC");
-//
-//        boolean hasMoreData = cursor.moveToFirst();
-//
-//        while (hasMoreData) {
-//            String name = cursor.getString(cursor.getColumnIndex("USERNAME"));
-//            int score = cursor.getInt(1); //Integer.parseInt(cursor.getString(cursor
-//            //.getColumnIndex("SCORE")));
-//            data.add(new Result(name, score));
-//            hasMoreData = cursor.moveToNext();
-//        }
-//
-//        return data;
-//    }
-
     private void createTablesIfNeedBe() {
         db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_NAME + "(" + " '" + COLUMN_NAME_OPERATION + "' " + "TEXT, " + COLUMN_COUNT_MONEY + " INTEGER);");
     }
