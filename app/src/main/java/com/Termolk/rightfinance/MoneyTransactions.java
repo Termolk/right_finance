@@ -61,17 +61,27 @@ public class MoneyTransactions extends AppCompatActivity {
                 selectedNumber = Integer.parseInt(editTextMoney.getText().toString());
                 Intent intent = new Intent();
                 if (action.equals("Добавить")) {
-                    intent.putExtra("ChangedMoney", MainActivity.money + selectedNumber);
+                    if (selectedNumber + MainActivity.money <= 1000000000) {
+                        intent.putExtra("ChangedMoney", MainActivity.money + selectedNumber);
+                        putValuesIntoHashMap();
+                        MainActivity.dbManager.addOperation(selectedCategory, selectedNumber);
+                    } else {
+                        Toast.makeText(this, "У вас много денег. Отложите их и начните еще раз", Toast.LENGTH_SHORT).show();
+                        MainActivity.dataMoney.clear();
+                        MainActivity.money = 0;
+                        MainActivity.dbManager.clearTable();
+                    }
+
                 } else if (action.equals("Вычесть")) {
                     if (MainActivity.money - selectedNumber < 0) {
                         Toast.makeText(this, "Недостаточно средств для списания", Toast.LENGTH_SHORT).show();
                     } else {
                         intent.putExtra("ChangedMoney", MainActivity.money - selectedNumber);
+                        putValuesIntoHashMap();
+                        MainActivity.dbManager.addOperation(selectedCategory, selectedNumber);
                     }
                 }
-                putValuesIntoHashMap();
                 setResult(RESULT_OK, intent);
-                MainActivity.dbManager.addOperation(selectedCategory, selectedNumber);
                 finish();
             } else {
                 Toast.makeText(this, "Вы не указали числовое значение", Toast.LENGTH_SHORT).show();
@@ -107,6 +117,18 @@ public class MoneyTransactions extends AppCompatActivity {
         MainActivity.Categories categories = MainActivity.dataMoney.get(action);
         if (!categories.containsKey(selectedCategory)) {
             categories.put(selectedCategory, selectedNumber);
-        } else categories.put(selectedCategory, categories.get(selectedCategory) + selectedNumber);
+        } else {
+            if (categories.get(selectedCategory) + selectedNumber <= 1000000000) {
+                categories.put(selectedCategory, categories.get(selectedCategory) + selectedNumber);
+            } else {
+                Toast.makeText(this, "У вас много денег. Отложите их и начните еще раз", Toast.LENGTH_SHORT).show();
+                MainActivity.dataMoney.clear();
+                MainActivity.money = 0;
+                Intent intent = new Intent(this, MainActivity.class);
+                MainActivity.dbManager.clearTable();
+                intent.putExtra("ChangedMoney", MainActivity.money + 0);
+                finish();
+            }
+        }
     }
 }

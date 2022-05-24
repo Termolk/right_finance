@@ -101,7 +101,6 @@ public class MainActivity extends AppCompatActivity {
 
         ed.putString(SAVED_MONEY, money + "");
         ed.putString(SAVED_SERIALIZED_MAP, serializedMap + "");
-        Log.d("123", serializedMap);
         ed.commit();
     }
 
