@@ -27,8 +27,6 @@ public class MoneyTransactions extends AppCompatActivity {
 
     static ArrayList<Operation> arrayListOperations = new ArrayList();
 
-
-
     String selectedCategory;
     int selectedNumber;
 
@@ -63,8 +61,8 @@ public class MoneyTransactions extends AppCompatActivity {
                 if (action.equals("Добавить")) {
                     if (selectedNumber + MainActivity.money <= 1000000000) {
                         intent.putExtra("ChangedMoney", MainActivity.money + selectedNumber);
-                        putValuesIntoHashMap();
                         MainActivity.dbManager.addOperation(selectedCategory, selectedNumber);
+                        putValuesIntoHashMap();
                     } else {
                         Toast.makeText(this, "У вас много денег. Отложите их и начните еще раз", Toast.LENGTH_SHORT).show();
                         MainActivity.dataMoney.clear();
@@ -77,8 +75,8 @@ public class MoneyTransactions extends AppCompatActivity {
                         Toast.makeText(this, "Недостаточно средств для списания", Toast.LENGTH_SHORT).show();
                     } else {
                         intent.putExtra("ChangedMoney", MainActivity.money - selectedNumber);
-                        putValuesIntoHashMap();
                         MainActivity.dbManager.addOperation(selectedCategory, selectedNumber);
+                        putValuesIntoHashMap();
                     }
                 }
                 setResult(RESULT_OK, intent);
@@ -103,13 +101,6 @@ public class MoneyTransactions extends AppCompatActivity {
         }
     }
 
-    private void initialViews() {
-        textViewAction = findViewById(R.id.textViewAction);
-        editTextMoney = findViewById(R.id.editTextMoney);
-        buttonChange = findViewById(R.id.buttonChange);
-        spinner = findViewById(R.id.spinnerCategories);
-    }
-
     private void putValuesIntoHashMap() {
         if (!MainActivity.dataMoney.containsKey(action)) {
             MainActivity.dataMoney.put(action, new MainActivity.Categories());
@@ -130,5 +121,12 @@ public class MoneyTransactions extends AppCompatActivity {
                 finish();
             }
         }
+    }
+
+    private void initialViews() {
+        textViewAction = findViewById(R.id.textViewAction);
+        editTextMoney = findViewById(R.id.editTextMoney);
+        buttonChange = findViewById(R.id.buttonChange);
+        spinner = findViewById(R.id.spinnerCategories);
     }
 }
