@@ -3,24 +3,24 @@ package com.Termolk.rightfinance;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.Map;
+
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class MainActivity extends AppCompatActivity {
+
+    static DBManager dbManager;
 
     static class Categories extends HashMap<String, Integer> {
 
@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     Button buttonAddMoney;
     Button buttonResetValues;
     Button buttonShowDiagram;
+    Button buttonShowHistory;
 
     SharedPreferences sPref;
 
@@ -55,6 +56,15 @@ public class MainActivity extends AppCompatActivity {
         intent = new Intent(this, MoneyTransactions.class);
         loadMoneyValues();
         listenButtons();
+        dbManager = DBManager.getInstance(this);
+
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://api.privatbank.ua")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+
     }
 
     @Override
@@ -66,22 +76,12 @@ public class MainActivity extends AppCompatActivity {
                     money = data.getIntExtra("ChangedMoney", money);
                     textViewTotalMoney.setText(money + "");
                     saveMoneyValues();
-
-//                    //Debug HashMap
-//                    for (Map.Entry<String, Categories> entry:
-//                            dataMoney.entrySet()) {
-//                        Log.d("DataCategories",entry.getKey() + ":");
-//                        Categories categories = entry.getValue();
-//                        for (String item:
-//                                categories.keySet()) {
-//                            Log.d("DataCategories",item + " " + categories.get(item));
-//                        }
-//                    }
                     break;
             }
         } else {
 
         }
+
     }
 
     @Override
@@ -119,6 +119,22 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void listenButtons() {
+        clickOnButtonAddMoney();
+        clickOnButtonSubtractMoney();
+        clickOnButtonResetValues();
+        clickOnbuttonShowDiagram();
+        clickOnbuttonShowHistory();
+    }
+
+    private void initialViews() {
+        textViewTotalMoney = findViewById(R.id.textViewTotalMoney);
+        buttonSubtractMoney = findViewById(R.id.buttonSubtractMoney);
+        buttonAddMoney = findViewById(R.id.buttonAddMoney);
+        buttonResetValues = findViewById(R.id.buttonResetValues);
+        buttonShowDiagram = findViewById(R.id.buttonShowDiagram);
+        buttonShowHistory = findViewById(R.id.buttonShowHistory);
+    }
 
     private void clickOnButtonAddMoney() {
         buttonAddMoney.setOnClickListener(view -> {
@@ -134,10 +150,16 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void buttonShowDiagram() {
+    private void clickOnbuttonShowDiagram() {
         buttonShowDiagram.setOnClickListener(view -> {
-            Intent digIntent = new Intent(this, Diagram.class);
+            Intent digIntent = new Intent(this, DiagramActivity.class);
             startActivity(digIntent);
+        });
+
+    }private void clickOnbuttonShowHistory() {
+        buttonShowHistory.setOnClickListener(view -> {
+            Intent hisIntent = new Intent(this, HistoryActivity.class);
+            startActivity(hisIntent);
         });
     }
 
@@ -146,22 +168,8 @@ public class MainActivity extends AppCompatActivity {
             money = 0;
             dataMoney.clear();
             textViewTotalMoney.setText("0");
+            dbManager.clearTable();
             saveMoneyValues();
         });
-    }
-
-    private void listenButtons() {
-        clickOnButtonAddMoney();
-        clickOnButtonSubtractMoney();
-        clickOnButtonResetValues();
-        buttonShowDiagram();
-    }
-
-    private void initialViews() {
-        textViewTotalMoney = findViewById(R.id.textViewTotalMoney);
-        buttonSubtractMoney = findViewById(R.id.buttonSubtractMoney);
-        buttonAddMoney = findViewById(R.id.buttonAddMoney);
-        buttonResetValues = findViewById(R.id.buttonResetValues);
-        buttonShowDiagram = findViewById(R.id.buttonShowDiagram);
     }
 }

@@ -14,7 +14,7 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class Diagram extends AppCompatActivity {
+public class DiagramActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

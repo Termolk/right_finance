@@ -2,11 +2,13 @@
     <string name="app_name">Right Finance</string>
 
     <string-array name="categories_sub">
-        <item>Общее</item>
+        <item>Общее (Расход)</item>
         <item>Продукты</item>
+        <item>Одежда</item>
         <item>Транспорт</item>
         <item>Образование</item>
         <item>Квартира</item>
+        <item>Подписки</item>
     </string-array>
 
     <string-array name="categories_add">

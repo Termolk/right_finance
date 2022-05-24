@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RightFinance">
         <activity
-            android:name=".Diagram"
+            android:name=".HistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DiagramActivity"
             android:exported="false" />
         <activity
             android:name=".MoneyTransactions"
