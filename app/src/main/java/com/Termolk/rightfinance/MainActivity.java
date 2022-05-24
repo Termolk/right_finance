@@ -13,7 +13,16 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.HashMap;
+import java.util.Map;
+
+
 public class MainActivity extends AppCompatActivity {
+
+    static class Categories extends HashMap<String, Integer> {
+
+    }
+    static HashMap<String, Categories> dataMoney = new HashMap<String, Categories>();
 
     TextView textViewTotalMoney;
     Button buttonSubtractMoney;
@@ -26,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
     final String SAVED_MONEY = "saved_money";
     final int REQUEST_CODE_CHANGE_MONEY = 1;
-
+    
     static int money;
 
     @Override
@@ -45,9 +54,20 @@ public class MainActivity extends AppCompatActivity {
         if (resultCode == RESULT_OK) {
             switch (requestCode) {
                 case REQUEST_CODE_CHANGE_MONEY:
-                    money = data.getIntExtra("ChangedMoney", 0);
+                    money = data.getIntExtra("ChangedMoney", money);
                     textViewTotalMoney.setText(money + "");
                     saveMoneyValues();
+
+                    //Debug HashMap
+                    for (Map.Entry<String, Categories> entry:
+                            dataMoney.entrySet()) {
+                        Log.d("DataCategories",entry.getKey() + ":");
+                        Categories categories = entry.getValue();
+                        for (String item:
+                                categories.keySet()) {
+                            Log.d("DataCategories",item + " " + categories.get(item));
+                        }
+                    }
                     break;
             }
         } else {
@@ -94,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
     private void clickOnButtonResetValues() {
         buttonResetValues.setOnClickListener(view -> {
             money = 0;
+            dataMoney.clear();
             textViewTotalMoney.setText("0");
         });
     }
@@ -112,3 +133,4 @@ public class MainActivity extends AppCompatActivity {
     }
 
 }
+

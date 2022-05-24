@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Right Finance</string>
+
+    <string-array name="categories_sub">
+        <item>Общее</item>
+        <item>Продукты</item>
+        <item>Транспорт</item>
+        <item>Образование</item>
+        <item>Квартира</item>
+    </string-array>
+
+    <string-array name="categories_add">
+        <item>Зарплата</item>
+        <item>Подработка</item>
+        <item>Другое</item>
+    </string-array>
 </resources>

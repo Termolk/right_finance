@@ -57,10 +57,11 @@
                 android:textSize="22sp" />
 
             <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="match_parent"
+                android:id="@+id/spinnerCategories"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="6" />
+                android:layout_weight="1"
+                android:spinnerMode="dialog" />
         </LinearLayout>
 
         <Button
