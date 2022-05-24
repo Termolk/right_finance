@@ -92,7 +92,14 @@ public class MainActivity extends AppCompatActivity {
         sPref = getSharedPreferences("MyPref", MODE_PRIVATE);
         SharedPreferences.Editor ed = sPref.edit();
 
+        Gson gson = new Gson();
+        MapWrapper wrapper = new MapWrapper();
+        wrapper.setMyMap(MainActivity.dataMoney);
+        String serializedMap = gson.toJson(wrapper);
+
         ed.putString(SAVED_MONEY, money + "");
+        ed.putString(SAVED_SERIALIZED_MAP, serializedMap + "");
+        Log.d("123", serializedMap);
         ed.commit();
     }
 
@@ -101,6 +108,13 @@ public class MainActivity extends AppCompatActivity {
         String savedText = sPref.getString(SAVED_MONEY, "0");
         money = Integer.parseInt(savedText);
         textViewTotalMoney.setText(savedText);
+
+        String wrapperStr = sPref.getString(SAVED_SERIALIZED_MAP, "{\"myMap\":{}}");
+        MapWrapper wrapper = gson.fromJson(wrapperStr, MapWrapper.class);
+        HashMap<String, Categories> savedMap = wrapper.getMyMap();
+        MainActivity.dataMoney.clear();
+        dataMoney.putAll(savedMap);
+
     }
 
 
