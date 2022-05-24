@@ -1,6 +1,5 @@
 package com.Termolk.rightfinance;
 
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -58,14 +57,7 @@ public class MoneyTransactions extends AppCompatActivity {
                 selectedNumber = Integer.parseInt(editTextMoney.getText().toString());
                 Intent intent = new Intent();
                 if (action.equals("Добавить")) {
-                    if (selectedNumber + MainActivity.money <= 1000000000) {
-                        putValuesIntoHashMap();
                         intent.putExtra("ChangedMoney", MainActivity.money + selectedNumber);
-                    } else {
-                        Toast.makeText(this, "Вы заработали очень много денег!\nВложите их все в инвестиции и начинайте считать деньги с чистого лица!", Toast.LENGTH_LONG).show();
-                        MainActivity.dataMoney.clear();
-                        MainActivity.money = 0;
-                    }
                 }
                 else if (action.equals("Вычесть")) {
                     if (MainActivity.money - selectedNumber < 0 ){
@@ -73,10 +65,9 @@ public class MoneyTransactions extends AppCompatActivity {
                     }
                     else {
                         intent.putExtra("ChangedMoney", MainActivity.money - selectedNumber);
-                        putValuesIntoHashMap();
-
                     }
                 }
+                putValuesIntoHashMap();
                 setResult(RESULT_OK, intent);
                 finish();
             } else {
@@ -114,18 +105,6 @@ public class MoneyTransactions extends AppCompatActivity {
         if (!categories.containsKey(selectedCategory)) {
             categories.put(selectedCategory, selectedNumber);
         }
-        else {
-            if (categories.get(selectedCategory) + selectedNumber <= 1000000000)
-                categories.put(selectedCategory, categories.get(action) + selectedNumber);
-            else {
-                Toast.makeText(this, "Вы заработали очень много денег!\nВложите их все в инвестиции и начинайте считать деньги с чистого лица!", Toast.LENGTH_SHORT).show();
-                MainActivity.dataMoney.clear();
-                MainActivity.money = 0;
-                Intent intent = new Intent();
-                intent.putExtra("ChangedMoney", MainActivity.money + 0);
-                finish();
-
-            }
-        }
+        else categories.put(selectedCategory, categories.get(selectedCategory) + selectedNumber);
     }
 }

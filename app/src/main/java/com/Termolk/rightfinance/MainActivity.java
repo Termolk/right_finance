@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences sPref;
 
     Intent intent;
+
+    Gson gson = new Gson();
 
     final String SAVED_SERIALIZED_MAP = "saved_serialized_map";
     final String SAVED_MONEY = "saved_money";
@@ -62,17 +65,16 @@ public class MainActivity extends AppCompatActivity {
                     textViewTotalMoney.setText(money + "");
                     saveMoneyValues();
 
-                    //Debug HashMap
-                    for (Map.Entry<String, Categories> entry:
-                            dataMoney.entrySet()) {
-                        Log.d("DataCategories",entry.getKey() + ":");
-                        Categories categories = entry.getValue();
-                        for (String item:
-                                categories.keySet()) {
-                            Log.d("DataCategories",item + " " + categories.get(item));
-                        }
-                    }
-
+//                    //Debug HashMap
+//                    for (Map.Entry<String, Categories> entry:
+//                            dataMoney.entrySet()) {
+//                        Log.d("DataCategories",entry.getKey() + ":");
+//                        Categories categories = entry.getValue();
+//                        for (String item:
+//                                categories.keySet()) {
+//                            Log.d("DataCategories",item + " " + categories.get(item));
+//                        }
+//                    }
                     break;
             }
         } else {
@@ -90,13 +92,7 @@ public class MainActivity extends AppCompatActivity {
         sPref = getSharedPreferences("MyPref", MODE_PRIVATE);
         SharedPreferences.Editor ed = sPref.edit();
 
-        Gson gson = new Gson();
-        MapWrapper wrapper = new MapWrapper();
-        wrapper.setMyMap(MainActivity.dataMoney);
-        String serializedMap = gson.toJson(wrapper);
-
         ed.putString(SAVED_MONEY, money + "");
-        ed.putString(SAVED_SERIALIZED_MAP, serializedMap + "");
         ed.commit();
     }
 
@@ -127,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
             money = 0;
             dataMoney.clear();
             textViewTotalMoney.setText("0");
+            saveMoneyValues();
         });
     }
 
