@@ -17,7 +17,6 @@ import java.util.HashMap;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-
 public class MainActivity extends AppCompatActivity {
 
     static DBManager dbManager;
@@ -27,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     static HashMap<String, Categories> dataMoney = new HashMap<String, Categories>();
-
 
     TextView textViewTotalMoney;
     Button buttonSubtractMoney;
@@ -57,14 +55,12 @@ public class MainActivity extends AppCompatActivity {
         loadMoneyValues();
         listenButtons();
         dbManager = DBManager.getInstance(this);
-
+        changeTextSize();
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://api.privatbank.ua")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-
-
     }
 
     @Override
@@ -76,11 +72,24 @@ public class MainActivity extends AppCompatActivity {
                     money = data.getIntExtra("ChangedMoney", money);
                     textViewTotalMoney.setText(money + "");
                     saveMoneyValues();
+                    changeTextSize();
                     break;
             }
         } else {
 
         }
+    }
+
+    private void changeTextSize() {
+        int lengthMoney = ("" + money).length();
+        if (lengthMoney >= 4)
+            textViewTotalMoney.setTextSize(92);
+        else
+            textViewTotalMoney.setTextSize(100);
+        if (lengthMoney >= 6)
+            textViewTotalMoney.setTextSize(80);
+        if (lengthMoney >= 8 || lengthMoney >= 9)
+            textViewTotalMoney.setTextSize(67);
     }
 
     @Override
@@ -168,6 +177,7 @@ public class MainActivity extends AppCompatActivity {
             textViewTotalMoney.setText("0");
             dbManager.clearTable();
             saveMoneyValues();
+            changeTextSize();
         });
     }
 }

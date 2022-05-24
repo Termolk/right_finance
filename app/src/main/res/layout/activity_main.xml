@@ -6,10 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/textViewTotalMoney"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="0"
+        android:textAlignment="center"
+        android:textSize="83sp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <LinearLayout
-        android:layout_margin="24dp"
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="24dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,15 +41,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="-" />
-
-            <TextView
-                android:id="@+id/textViewTotalMoney"
-                android:layout_width="17dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textAlignment="center"
-                android:textSize="27sp"
-                android:text="0" />
 
             <Button
                 android:id="@+id/buttonAddMoney"
@@ -62,9 +67,9 @@
 
             <Button
                 android:id="@+id/buttonShowHistory"
-                android:layout_marginLeft="5dp"
                 android:layout_width="35dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
                 android:layout_weight="1"
                 android:text="История" />
         </LinearLayout>
@@ -74,13 +79,20 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/buttonResetValues"
-                android:layout_width="30dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="Сбросить данные" />
         </LinearLayout>
     </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonResetValues"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:layout_weight="1"
+        android:text="Сбросить данные"
+        app:layout_constraintVertical_bias="0.9"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
