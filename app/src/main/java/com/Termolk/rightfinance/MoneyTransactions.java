@@ -43,7 +43,13 @@ public class MoneyTransactions extends AppCompatActivity {
                 if (action.equals("Добавить")) {
                     intent.putExtra("ChangedMoney", MainActivity.money + Integer.parseInt(editTextMoney.getText().toString()));
                 } else if (action.equals("Вычесть")) {
-                    intent.putExtra("ChangedMoney", MainActivity.money - Integer.parseInt(editTextMoney.getText().toString()));
+                    if (MainActivity.money - Integer.parseInt(editTextMoney.getText().toString()) <= 0 ){
+                        intent.putExtra("ChangedMoney", 0);
+                    }
+                    else {
+                        intent.putExtra("ChangedMoney", MainActivity.money - Integer.parseInt(editTextMoney.getText().toString()));
+                    }
+
                 }
                 setResult(RESULT_OK, intent);
                 finish();
