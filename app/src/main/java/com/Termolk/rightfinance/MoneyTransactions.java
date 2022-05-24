@@ -59,8 +59,8 @@ public class MoneyTransactions extends AppCompatActivity {
                 Intent intent = new Intent();
                 if (action.equals("Добавить")) {
                     if (selectedNumber + MainActivity.money <= 1000000000) {
-                        intent.putExtra("ChangedMoney", MainActivity.money + selectedNumber);
                         putValuesIntoHashMap();
+                        intent.putExtra("ChangedMoney", MainActivity.money + selectedNumber);
                     } else {
                         Toast.makeText(this, "Вы заработали очень много денег!\nВложите их все в инвестиции и начинайте считать деньги с чистого лица!", Toast.LENGTH_LONG).show();
                         MainActivity.dataMoney.clear();
@@ -68,7 +68,7 @@ public class MoneyTransactions extends AppCompatActivity {
                     }
                 }
                 else if (action.equals("Вычесть")) {
-                    if (MainActivity.money - selectedNumber <= 0 ){
+                    if (MainActivity.money - selectedNumber < 0 ){
                         Toast.makeText(this, "Недостаточно средств для списания", Toast.LENGTH_SHORT).show();
                     }
                     else {
@@ -117,8 +117,15 @@ public class MoneyTransactions extends AppCompatActivity {
         else {
             if (categories.get(selectedCategory) + selectedNumber <= 1000000000)
                 categories.put(selectedCategory, categories.get(action) + selectedNumber);
-            else
+            else {
                 Toast.makeText(this, "Вы заработали очень много денег!\nВложите их все в инвестиции и начинайте считать деньги с чистого лица!", Toast.LENGTH_SHORT).show();
+                MainActivity.dataMoney.clear();
+                MainActivity.money = 0;
+                Intent intent = new Intent();
+                intent.putExtra("ChangedMoney", MainActivity.money + 0);
+                finish();
+
+            }
         }
     }
 }

@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     }
     static HashMap<String, Categories> dataMoney = new HashMap<String, Categories>();
 
+
     TextView textViewTotalMoney;
     Button buttonSubtractMoney;
     Button buttonAddMoney;
@@ -33,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
     Intent intent;
 
+    final String SAVED_SERIALIZED_MAP = "saved_serialized_map";
     final String SAVED_MONEY = "saved_money";
     final int REQUEST_CODE_CHANGE_MONEY = 1;
     
@@ -68,12 +72,12 @@ public class MainActivity extends AppCompatActivity {
                             Log.d("DataCategories",item + " " + categories.get(item));
                         }
                     }
+
                     break;
             }
         } else {
 
         }
-        saveMoneyValues();
     }
 
     @Override
@@ -85,7 +89,14 @@ public class MainActivity extends AppCompatActivity {
     private void saveMoneyValues() {
         sPref = getSharedPreferences("MyPref", MODE_PRIVATE);
         SharedPreferences.Editor ed = sPref.edit();
+
+        Gson gson = new Gson();
+        MapWrapper wrapper = new MapWrapper();
+        wrapper.setMyMap(MainActivity.dataMoney);
+        String serializedMap = gson.toJson(wrapper);
+
         ed.putString(SAVED_MONEY, money + "");
+        ed.putString(SAVED_SERIALIZED_MAP, serializedMap + "");
         ed.commit();
     }
 
@@ -131,6 +142,4 @@ public class MainActivity extends AppCompatActivity {
         buttonAddMoney = findViewById(R.id.buttonAddMoney);
         buttonResetValues = findViewById(R.id.buttonResetValues);
     }
-
 }
-
