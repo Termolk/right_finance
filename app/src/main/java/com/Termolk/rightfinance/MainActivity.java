@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     static class Categories extends HashMap<String, Integer> {
 
     }
+
     static HashMap<String, Categories> dataMoney = new HashMap<String, Categories>();
 
 
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     Button buttonSubtractMoney;
     Button buttonAddMoney;
     Button buttonResetValues;
+    Button buttonShowDiagram;
 
     SharedPreferences sPref;
 
@@ -42,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     final String SAVED_SERIALIZED_MAP = "saved_serialized_map";
     final String SAVED_MONEY = "saved_money";
     final int REQUEST_CODE_CHANGE_MONEY = 1;
-    
+
     static int money;
 
     @Override
@@ -132,6 +134,13 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void buttonShowDiagram() {
+        buttonShowDiagram.setOnClickListener(view -> {
+            Intent digIntent = new Intent(this, Diagram.class);
+            startActivity(digIntent);
+        });
+    }
+
     private void clickOnButtonResetValues() {
         buttonResetValues.setOnClickListener(view -> {
             money = 0;
@@ -145,6 +154,7 @@ public class MainActivity extends AppCompatActivity {
         clickOnButtonAddMoney();
         clickOnButtonSubtractMoney();
         clickOnButtonResetValues();
+        buttonShowDiagram();
     }
 
     private void initialViews() {
@@ -152,5 +162,6 @@ public class MainActivity extends AppCompatActivity {
         buttonSubtractMoney = findViewById(R.id.buttonSubtractMoney);
         buttonAddMoney = findViewById(R.id.buttonAddMoney);
         buttonResetValues = findViewById(R.id.buttonResetValues);
+        buttonShowDiagram = findViewById(R.id.buttonShowDiagram);
     }
 }

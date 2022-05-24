@@ -41,7 +41,7 @@ public class MoneyTransactions extends AppCompatActivity {
 
         initialViews();
         Bundle arguments = getIntent().getExtras();
-        if(arguments!=null){
+        if (arguments != null) {
             action = arguments.get("action").toString();
             textViewAction.setText(action);
         }
@@ -57,13 +57,11 @@ public class MoneyTransactions extends AppCompatActivity {
                 selectedNumber = Integer.parseInt(editTextMoney.getText().toString());
                 Intent intent = new Intent();
                 if (action.equals("Добавить")) {
-                        intent.putExtra("ChangedMoney", MainActivity.money + selectedNumber);
-                }
-                else if (action.equals("Вычесть")) {
-                    if (MainActivity.money - selectedNumber < 0 ){
+                    intent.putExtra("ChangedMoney", MainActivity.money + selectedNumber);
+                } else if (action.equals("Вычесть")) {
+                    if (MainActivity.money - selectedNumber < 0) {
                         Toast.makeText(this, "Недостаточно средств для списания", Toast.LENGTH_SHORT).show();
-                    }
-                    else {
+                    } else {
                         intent.putExtra("ChangedMoney", MainActivity.money - selectedNumber);
                     }
                 }
@@ -104,7 +102,6 @@ public class MoneyTransactions extends AppCompatActivity {
         MainActivity.Categories categories = MainActivity.dataMoney.get(action);
         if (!categories.containsKey(selectedCategory)) {
             categories.put(selectedCategory, selectedNumber);
-        }
-        else categories.put(selectedCategory, categories.get(selectedCategory) + selectedNumber);
+        } else categories.put(selectedCategory, categories.get(selectedCategory) + selectedNumber);
     }
 }
