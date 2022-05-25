@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Right Finance</string>
-    <string name="add">add</string>
-    <string name="substract">sub</string>
+    <string name="add">Add</string>
+    <string name="substract">Sub</string>
     <string name="statistic">statistic</string>
     <string name="history">history</string>
     <string name="reset">reset values</string>
 
     <string-array name="categories_sub">
-        <item>General (Расход)</item>
+        <item>General</item>
         <item>Products</item>
         <item>Food</item>
-        <item>Одежда</item>
         <item>Clothes</item>
+        <item>Travel</item>
         <item>Education</item>
         <item>Rent for apartment</item>
         <item>Subscription</item>
@@ -23,4 +23,12 @@
         <item>Side job</item>
         <item>Another</item>
     </string-array>
+    <string name="income">Income</string>
+    <string name="consumption">Сonsumption</string>
+    <string name="category">Category</string>
+    <string name="apply">Apply</string>
+    <string name="much_money">You have a lot of money. Put it aside and start again</string>
+    <string name="need_numbers">You did not set a numerical value</string>
+    <string name="havent_money">Not enough money to write off</string>
+    <string name="enter_num">Enter the amount you need</string>
 </resources>

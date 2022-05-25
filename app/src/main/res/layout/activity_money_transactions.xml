@@ -32,14 +32,15 @@
 
             <EditText
                 android:id="@+id/editTextMoney"
-                android:textSize="18sp"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="Введите нужную сумму"
+                android:hint="@string/enter_num"
+                android:inputType="number"
                 android:maxLength="9"
-                android:inputType="number" />
+                android:textColorHint="#757575"
+                android:textSize="18sp" />
 
         </LinearLayout>
 
@@ -54,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
                 android:layout_marginTop="5dp"
-                android:text="Категория"
+                android:text="@string/category"
                 android:textSize="18sp" />
 
             <Spinner
@@ -72,6 +73,6 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:textSize="25sp"
-            android:text="Применить" />
+            android:text="@string/apply" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -57,21 +57,21 @@ public class MoneyTransactions extends AppCompatActivity {
                 selectedCategory = spinner.getSelectedItem().toString();
                 selectedNumber = Integer.parseInt(editTextMoney.getText().toString());
                 Intent intent = new Intent();
-                if (action.equals("Добавить")) {
+                if (action.equals(getResources().getString(R.string.add))) {
                     if (selectedNumber + MainActivity.money <= 1000000000) {
                         intent.putExtra("ChangedMoney", MainActivity.money + selectedNumber);
                         MainActivity.dbManager.addOperation(selectedCategory, selectedNumber);
                         putValuesIntoHashMap();
                     } else {
-                        Toast.makeText(this, "У вас много денег. Отложите их и начните еще раз", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, getResources().getString(R.string.much_money), Toast.LENGTH_SHORT).show();
                         MainActivity.dataMoney.clear();
                         MainActivity.money = 0;
                         MainActivity.dbManager.clearTable();
                     }
 
-                } else if (action.equals("Вычесть")) {
+                } else if (action.equals(getResources().getString(R.string.substract))) {
                     if (MainActivity.money - selectedNumber < 0) {
-                        Toast.makeText(this, "Недостаточно средств для списания", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, getResources().getString(R.string.havent_money), Toast.LENGTH_SHORT).show();
                     } else {
                         intent.putExtra("ChangedMoney", MainActivity.money - selectedNumber);
                         MainActivity.dbManager.addOperation(selectedCategory, selectedNumber);
@@ -81,22 +81,22 @@ public class MoneyTransactions extends AppCompatActivity {
                 setResult(RESULT_OK, intent);
                 finish();
             } else {
-                Toast.makeText(this, "Вы не указали числовое значение", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getResources().getString(R.string.need_numbers), Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     private void fillSpinner() {
-        if (action.equals("Добавить")) {
+        if (action.equals(getResources().getString(R.string.add))) {
             ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this, R.layout.spinner_item, categoriesAdd);
             spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinner.setAdapter(spinnerArrayAdapter);
-            spinner.setPrompt("Доход");
-        } else if (action.equals("Вычесть")) {
+            spinner.setPrompt(getResources().getString(R.string.income));
+        } else if (action.equals(getResources().getString(R.string.substract))) {
             ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this, R.layout.spinner_item, categoriesSub);
             spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinner.setAdapter(spinnerArrayAdapter);
-            spinner.setPrompt("Расход");
+            spinner.setPrompt(getResources().getString(R.string.consumption));
         }
     }
 
@@ -111,7 +111,7 @@ public class MoneyTransactions extends AppCompatActivity {
             if (categories.get(selectedCategory) + selectedNumber <= 1000000000) {
                 categories.put(selectedCategory, categories.get(selectedCategory) + selectedNumber);
             } else {
-                Toast.makeText(this, "У вас много денег. Отложите их и начните еще раз", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getResources().getString(R.string.much_money), Toast.LENGTH_SHORT).show();
                 MainActivity.dataMoney.clear();
                 MainActivity.money = 0;
                 Intent intent = new Intent(this, MainActivity.class);

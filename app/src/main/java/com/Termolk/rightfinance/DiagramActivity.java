@@ -34,7 +34,7 @@ public class DiagramActivity extends AppCompatActivity {
             }
         }
 
-        PieDataSet pieDataSet = new PieDataSet(visitors, "Расходы");
+        PieDataSet pieDataSet = new PieDataSet(visitors, getResources().getString(R.string.statistic));
         pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
         pieDataSet.setValueTextColor(Color.BLACK);
         pieDataSet.setValueTextSize(20f);
@@ -43,7 +43,7 @@ public class DiagramActivity extends AppCompatActivity {
 
         pieChart.setData(pieData);
         pieChart.getDescription().setEnabled(false);
-        pieChart.setCenterText("Статистика");
+        pieChart.setCenterText(getResources().getString(R.string.statistic));
         pieChart.animate();
 
     }

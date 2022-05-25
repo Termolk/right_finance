@@ -3,6 +3,7 @@ package com.Termolk.rightfinance;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -33,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
     Button buttonResetValues;
     Button buttonShowDiagram;
     Button buttonShowHistory;
+
+    String action;
 
     SharedPreferences sPref;
 
@@ -138,16 +141,17 @@ public class MainActivity extends AppCompatActivity {
         buttonShowHistory = findViewById(R.id.buttonShowHistory);
     }
 
+    @SuppressLint("ResourceType")
     private void clickOnButtonAddMoney() {
         buttonAddMoney.setOnClickListener(view -> {
-            intent.putExtra("action", "Добавить");
+            intent.putExtra("action", getResources().getString(R.string.add));
             startActivityForResult(intent, REQUEST_CODE_CHANGE_MONEY);
         });
     }
 
     private void clickOnButtonSubtractMoney() {
         buttonSubtractMoney.setOnClickListener(view -> {
-            intent.putExtra("action", "Вычесть");
+            intent.putExtra("action", getResources().getString(R.string.substract));
             startActivityForResult(intent, REQUEST_CODE_CHANGE_MONEY);
         });
     }

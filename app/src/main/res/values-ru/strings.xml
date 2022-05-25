@@ -23,4 +23,12 @@
         <item>Подработка</item>
         <item>Другое</item>
     </string-array>
+    <string name="income">Доход</string>
+    <string name="consumption">Расход</string>
+    <string name="category">Категория</string>
+    <string name="apply">Применить</string>
+    <string name="much_money">У вас много денег. Отложите их и начните еще раз</string>
+    <string name="need_numbers">Вы не указали числовое значение</string>
+    <string name="havent_money">Недостаточно средств для списания</string>
+    <string name="enter_num">Введите нужную сумму</string>
 </resources>
