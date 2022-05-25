@@ -1,7 +1,13 @@
 # right_finance
-# Description
+## Description
 Financial reporting program. Without unnecessary functionality, buttons and advertising. Everything is done in the form of minimalism. You can add or subtract cash to the original amount. There is a tab that contains the history of all transactions and a chart.
-# What will be done in the new updates?
+
+## Review of the programme
+
+[Video](https://youtube.com/shorts/qXs9BQH-AKE?feature=share)
+
+[Download app](https://disk.yandex.ru/i/ZzRS5b6XP1GEJQ)
+## What will be done in the new updates?
 * Possibility for adding categories
 * Sort the data in the History & Graph
 * Add day stats
