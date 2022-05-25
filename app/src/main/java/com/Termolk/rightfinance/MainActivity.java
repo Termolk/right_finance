@@ -56,11 +56,6 @@ public class MainActivity extends AppCompatActivity {
         listenButtons();
         dbManager = DBManager.getInstance(this);
         changeTextSize();
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.privatbank.ua")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
     }
 
     @Override
