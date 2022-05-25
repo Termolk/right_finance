@@ -25,7 +25,6 @@ public class MoneyTransactions extends AppCompatActivity {
     String[] categoriesSub;
     String[] categoriesAdd;
 
-    static ArrayList<Operation> arrayListOperations = new ArrayList();
 
     String selectedCategory;
     int selectedNumber;

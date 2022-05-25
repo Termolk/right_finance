@@ -39,21 +39,21 @@
             <Button
                 android:id="@+id/buttonSubtractMoney"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="70dp"
                 android:layout_weight="1"
-                android:text="вычесть"
+                android:text="@string/substract"
                 android:textAlignment="center"
-                android:textSize="25dp" />
+                android:textSize="21dp" />
 
 
             <Button
                 android:id="@+id/buttonAddMoney"
                 android:layout_marginLeft="5dp"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="70dp"
                 android:layout_weight="1"
-                android:textSize="25dp"
-                android:text="сложить" />
+                android:textSize="21dp"
+                android:text="@string/add" />
 
         </LinearLayout>
 
@@ -79,19 +79,19 @@
         <Button
             android:id="@+id/buttonShowDiagram"
             android:layout_width="35dp"
-            android:layout_height="wrap_content"
+            android:layout_height="56dp"
             android:layout_weight="1"
-            android:textSize="20sp"
-            android:text="Статистика" />
+            android:textSize="16sp"
+            android:text="@string/statistic" />
 
         <Button
             android:id="@+id/buttonShowHistory"
             android:layout_width="35dp"
-            android:layout_height="wrap_content"
+            android:layout_height="56dp"
             android:layout_marginLeft="5dp"
             android:layout_weight="1"
-            android:textSize="20sp"
-            android:text="История" />
+            android:textSize="16sp"
+            android:text="@string/history" />
     </LinearLayout>
 
     <Button
@@ -100,7 +100,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="24dp"
         android:layout_weight="1"
-        android:text="Сбросить данные"
+        android:text="@string/reset"
         app:layout_constraintVertical_bias="0.9"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

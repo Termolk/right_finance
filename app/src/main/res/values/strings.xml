@@ -1,19 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Right Finance</string>
+    <string name="add">add</string>
+    <string name="substract">sub</string>
+    <string name="statistic">statistic</string>
+    <string name="history">history</string>
+    <string name="reset">reset values</string>
 
     <string-array name="categories_sub">
-        <item>Общее (Расход)</item>
-        <item>Продукты</item>
+        <item>General (Расход)</item>
+        <item>Products</item>
+        <item>Food</item>
         <item>Одежда</item>
-        <item>Транспорт</item>
-        <item>Образование</item>
-        <item>Квартира</item>
-        <item>Подписки</item>
+        <item>Clothes</item>
+        <item>Education</item>
+        <item>Rent for apartment</item>
+        <item>Subscription</item>
     </string-array>
 
     <string-array name="categories_add">
-        <item>Зарплата</item>
-        <item>Подработка</item>
-        <item>Другое</item>
+        <item>Salary</item>
+        <item>Side job</item>
+        <item>Another</item>
     </string-array>
 </resources>

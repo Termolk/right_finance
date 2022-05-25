@@ -26,13 +26,13 @@
                 android:id="@+id/textViewAction"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="25sp"
+                android:layout_weight="5"
+                android:textSize="17sp"
                 android:text="Действие" />
 
             <EditText
                 android:id="@+id/editTextMoney"
-                android:textSize="24sp"
+                android:textSize="18sp"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:layout_weight="1"
@@ -52,10 +52,10 @@
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="5"
                 android:layout_marginTop="5dp"
                 android:text="Категория"
-                android:textSize="25sp" />
+                android:textSize="18sp" />
 
             <Spinner
                 android:id="@+id/spinnerCategories"
