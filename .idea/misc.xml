@@ -3,12 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../Library/Android/sdk/platforms/android-32/data/res/layout/simple_spinner_dropdown_item.xml" value="0.2953125" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.136" />
         <entry key="app/src/main/res/drawable/background_splash.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.136" />
         <entry key="app/src/main/res/layout/activity_diagram.xml" value="0.2608695652173913" />
         <entry key="app/src/main/res/layout/activity_history.xml" value="0.2608695652173913" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.22314910888671877" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main2.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/layout/activity_money_transactions.xml" value="0.2608695652173913" />
         <entry key="app/src/main/res/layout/activity_recycler_view_for_operations.xml" value="0.2608695652173913" />

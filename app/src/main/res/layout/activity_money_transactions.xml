@@ -27,12 +27,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="24sp"
+                android:textSize="25sp"
                 android:text="Действие" />
 
             <EditText
                 android:id="@+id/editTextMoney"
-                android:textSize="20sp"
+                android:textSize="24sp"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:layout_weight="1"
@@ -53,8 +53,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_marginTop="5dp"
                 android:text="Категория"
-                android:textSize="22sp" />
+                android:textSize="25sp" />
 
             <Spinner
                 android:id="@+id/spinnerCategories"
@@ -66,9 +67,11 @@
 
         <Button
             android:id="@+id/buttonChange"
+            android:layout_marginTop="5dp"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:textSize="25sp"
             android:text="Применить" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
