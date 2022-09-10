@@ -6,7 +6,6 @@ Financial reporting program. Without unnecessary functionality, buttons and adve
 
 [Video](https://youtube.com/shorts/qXs9BQH-AKE?feature=share)
 
-[Download app](https://disk.yandex.ru/i/ZzRS5b6XP1GEJQ)
 ## What will be done in the new updates?
 * Possibility for adding categories
 * Sort the data in the History & Graph
